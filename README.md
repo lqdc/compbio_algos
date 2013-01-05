@@ -3,7 +3,8 @@ compbio_algos
 
 Various comp bio algorithms I've implemented.
 
-Python 
+Python
+======
 
 Dead End Elimination is in dee.py.  It can use two matrices, pair.dat and pair_small.dat. 
 The file pair.dat is a plain text, tab-delimited
