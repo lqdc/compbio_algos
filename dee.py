@@ -9,7 +9,6 @@ DEE algorithm for singles and pairs using Goldstein elimination criteria
 from numpy import *
 from pylab import mlab
 from time import time
-#import numpy.ma as ma
 import numpy as np
 import matplotlib.pyplot as plt
 from itertools import combinations
@@ -84,7 +83,7 @@ def eliminate_singles(sym_matrix, positions, current_sub_height, height_now , el
                             if len(min_row_zeros) > 0:
                                 total_min+=min_row_zeros.min()
                             else:
-                                total_min=999999
+                                total_min=999999 #high energy that will never be reached
                         total_sum = 0
                         total_sum = s_value - t_value + total_min
                         if total_sum > 0:
@@ -156,6 +155,7 @@ def create_uv_values(positions, current_sub_height):
     return (u_list, v_list)
 
 def eliminate_doubles(sym_matrix, positions, current_sub_height, eliminated, pairs_binary):
+    '''eliminates pairs according to Goldstein criteria'''
     print 'perform pairs'
     absolute_row_index = 0
     absolute_column_index = 0
@@ -225,6 +225,7 @@ def evaluate_energy(sym_matrix, indices, current_sub_height, positions, pairs_co
     return total_energy
 
 def enumerate_remaining(sym_matrix, current_sub_height, positions):
+    '''use brute force enumeration to try all combinations of the remaining Rotamers'''
     indices = zeros((positions),dtype=np.int)
     some_other_index = 0
     pairs_combinations = combinations(arange((positions),dtype=np.int),2)
@@ -255,12 +256,7 @@ def enumerate_remaining(sym_matrix, current_sub_height, positions):
     print "energy of the final conformation is %f" % best_energy
     return sym_matrix[best_absolute_loc][:,best_absolute_loc]
     
-if __name__ == '__main__':
-
-    # pair_small = zeros((405,405))
-    # f = open('./pair_small.dat')
-    # positions = 3
-
+def main():
     pair_small = zeros((1530,1530))
     positions = 5
     try:
@@ -320,3 +316,5 @@ if __name__ == '__main__':
     plt.xlabel('Singles Iterations')
     plt.ylabel('Rotamers Left')
     plt.show()
+if __name__ == '__main__':
+    main()
