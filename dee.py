@@ -4,7 +4,9 @@
 Author: Roman Sinayev
 Date: Thu May  3 04:35:00 EDT 2012
 Description: 
-DEE algorithm for singles and pairs using Goldstein elimination criteria
+DEE algorithm for singles and pairs using Goldstein Pairs Elimination Criterion
+
+http://en.wikipedia.org/wiki/Dead-end_elimination
 """
 from numpy import *
 from pylab import mlab
